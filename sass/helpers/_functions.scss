@@ -1,0 +1,14 @@
+
+@function counter ($size){
+    @return $size / 2
+};
+
+
+
+@function comple($sizes...){
+    $total:0;
+    @each $size in $sizes {
+        $total:$total + $size ;
+    }
+    @return $total
+};

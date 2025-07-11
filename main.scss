@@ -1,0 +1,265 @@
+// import from global rules
+@use './sass/layout/global-rules';
+
+// import from page fill
+@use './sass/page/content.scss';
+
+// import from variabels fill
+@use "./sass/variabels/all_valiabels" as * ;
+
+// improt mixsins helpers 
+@use './sass/helpers/mixsins' as *;
+
+// import functions Fill
+@use './sass/helpers/functions' as *;
+
+.sidbar {
+    color:$main_color;
+    background: $main_bg;
+    padding: $main_p;
+}
+
+@media($max_mobile){
+    .scroll {
+        margin: 10px;
+    }
+}
+
+// nasting sass
+
+.perant {
+    padding: 20px;
+    .child {
+        padding: 10px;
+        .gran-child {
+            padding: 5px;
+        }
+    }
+    .direct {
+        padding: 30px;
+    }
+}
+//           [[[[[   2   ]]]]]
+
+
+.box {
+    &.poin {
+        display: none;
+    }
+    &.move{
+        display: block;
+    }
+    &:hover {
+        background-color: $main_bg;
+    }
+    &:hover .poin {
+        display: block;
+    }
+}
+
+.element {
+    :not(&) {
+        display: flex;
+    }
+
+    [dir ="rtl"] & {
+        direction: rtl;
+    }
+}
+
+
+//  placholder and extend
+
+.advanced {
+    padding: 20px;
+    font: {
+        size: 20px;
+        weight: bold;
+        family:'sans ref';
+    }
+    margin: auto {
+        top: 20px;
+        bottom: 20px;
+    }
+
+    background-color: $main_color;
+}
+
+//           [[[[  2  ]]]]
+
+%main-style {
+    font: {
+        size: 20px;
+        weight:bold;
+    }
+    color: $main_color;
+    padding: 15px;
+    position: relative;
+}
+
+.adds {
+    @extend %main-style;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.article {
+    @extend %main-style;
+    display: grid;
+    grid-template-columns: repeat(auto-fill , minmax(400px, 1fr));
+
+}
+
+//  if coundeion 
+
+$theme: dark ;
+
+.theme {
+    @if $theme == light {
+        background-color: #fff;
+        color: #444;
+    }@else{
+        background: #444;
+        color: #fff;
+        @extend %main-style
+    }
+}
+
+$rounded: true;
+$squer-w:true;
+$squer-h:true;
+//  [[[  2  ]]]
+.reounded {
+    border-radius: if($rounded,6px,null );
+    width: if($squer-w,200px,null);
+    height: if($squer-h,200px,null);
+
+}
+.arrow {
+    padding: 10xp;
+    border: 1px solid #eee;
+}
+
+// intrpolaton 
+$companny:'elhassan';
+$manger:'right';
+$posion:top;
+
+.add-#{$companny} {
+    background-image: url('/image/#{$companny}.jpg');
+    #{$manger} : 0;
+    #{$posion} :0;
+}
+
+
+// @mixin
+
+.byMixin-centerliz {
+    @include  certrlize ;
+}
+.circl-200 {
+    @include circl(200px);
+}
+.list-style {
+    @include list-style;
+}
+
+.circl-centelize {
+    @include circl(400);
+    @include certrlize;
+} 
+
+// loop 
+@for $i from 0 through 10 {
+    .class-#{$i}{
+
+        font-size: $i + 10;
+    }
+}
+
+//       [[[[2]]]]
+
+$count: 0 ;
+@for $i from 1 through 5{
+    .circle-#{100 + $count}{
+        width: $count + 100px ;
+        height:  $count + 100px ;
+        border-radius: 50%;
+    }
+    $count: $count + 100
+}
+
+// Each %% map
+$themes :red green ;
+@each $theme in $themes{
+    .#{$theme}-them{
+        .gato {
+            background-color: $theme;
+            color: #fff;
+            .title {
+                border-bottom: 1px solid $theme;
+            }
+        }
+
+    }
+}
+
+// [[[[[  2 ]]]]]
+
+$clasess :'one' 20px red  , 'three'40px purple;
+
+@each $class , $font , $color in $clasess {
+    .#{$class}{
+        background-color: $color;
+        font-size: $font;
+        padding: $font / 2;
+    }
+}
+
+//   [[[[[  3  ]]]]]
+
+    $clasess :'facebook'  red , 'x'  black , "twitter" blue; 
+    @each $name , $style in $clasess {
+    .#{$name}{
+    background:$style;
+    &:before{
+    content:$name;
+    }
+    }
+    }
+
+//  functions
+
+$width:300px;
+
+.ele {
+    width: $width;
+    height: counter($width);
+    bottom: comple(100px , 50px , 100px);
+}
+
+
+
+
+
+    // creat grid system like bootstrap
+
+    $grid-col:12;
+    @for $i from 1 through $grid-col {
+        .col-#{$i} {
+            width: percentage($i / $grid-col);
+        }
+
+    }
+
+    $grid-col-byMe:16;
+    // [[[[[ 2  ]]]]
+    @for $i from 1 through $grid-col-byMe {
+        .col-#{$i}{
+            width: percentage($i / $grid-col-byMe );
+        }
+
+    }
+
+

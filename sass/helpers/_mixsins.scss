@@ -1,0 +1,21 @@
+// circl mixin
+@mixin circl($dir) {
+    border: 50%;
+    width: $dir;
+    height: $dir;
+}
+
+// list mixin
+@mixin list-style {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+// mixin for centerlize
+@mixin certrlize {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
