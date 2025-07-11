@@ -18,15 +18,12 @@
     background: $main_bg;
     padding: $main_p;
 }
-
 @media($max_mobile){
     .scroll {
         margin: 10px;
     }
 }
-
 // nasting sass
-
 .perant {
     padding: 20px;
     .child {
@@ -40,8 +37,6 @@
     }
 }
 //           [[[[[   2   ]]]]]
-
-
 .box {
     &.poin {
         display: none;
@@ -66,10 +61,7 @@
         direction: rtl;
     }
 }
-
-
 //  placholder and extend
-
 .advanced {
     padding: 20px;
     font: {
@@ -81,10 +73,8 @@
         top: 20px;
         bottom: 20px;
     }
-
     background-color: $main_color;
 }
-
 //           [[[[  2  ]]]]
 
 %main-style {
@@ -96,7 +86,6 @@
     padding: 15px;
     position: relative;
 }
-
 .adds {
     @extend %main-style;
     display: flex;
@@ -108,13 +97,9 @@
     @extend %main-style;
     display: grid;
     grid-template-columns: repeat(auto-fill , minmax(400px, 1fr));
-
 }
-
 //  if coundeion 
-
 $theme: dark ;
-
 .theme {
     @if $theme == light {
         background-color: #fff;
@@ -134,7 +119,6 @@ $squer-h:true;
     border-radius: if($rounded,6px,null );
     width: if($squer-w,200px,null);
     height: if($squer-h,200px,null);
-
 }
 .arrow {
     padding: 10xp;
@@ -151,10 +135,7 @@ $posion:top;
     #{$manger} : 0;
     #{$posion} :0;
 }
-
-
 // @mixin
-
 .byMixin-centerliz {
     @include  certrlize ;
 }
@@ -169,7 +150,6 @@ $posion:top;
     @include circl(400);
     @include certrlize;
 } 
-
 // loop 
 @for $i from 0 through 10 {
     .class-#{$i}{
@@ -177,7 +157,6 @@ $posion:top;
         font-size: $i + 10;
     }
 }
-
 //       [[[[2]]]]
 
 $count: 0 ;
@@ -189,7 +168,6 @@ $count: 0 ;
     }
     $count: $count + 100
 }
-
 // Each %% map
 $themes :red green ;
 @each $theme in $themes{
@@ -204,9 +182,7 @@ $themes :red green ;
 
     }
 }
-
 // [[[[[  2 ]]]]]
-
 $clasess :'one' 20px red  , 'three'40px purple;
 
 @each $class , $font , $color in $clasess {
@@ -216,9 +192,7 @@ $clasess :'one' 20px red  , 'three'40px purple;
         padding: $font / 2;
     }
 }
-
 //   [[[[[  3  ]]]]]
-
     $clasess :'facebook'  red , 'x'  black , "twitter" blue; 
     @each $name , $style in $clasess {
     .#{$name}{
@@ -228,9 +202,7 @@ $clasess :'one' 20px red  , 'three'40px purple;
     }
     }
     }
-
 //  functions
-
 $width:300px;
 
 .ele {
@@ -238,13 +210,7 @@ $width:300px;
     height: counter($width);
     bottom: comple(100px , 50px , 100px);
 }
-
-
-
-
-
     // creat grid system like bootstrap
-
     $grid-col:12;
     @for $i from 1 through $grid-col {
         .col-#{$i} {
@@ -261,5 +227,3 @@ $width:300px;
         }
 
     }
-
-
